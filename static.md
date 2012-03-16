@@ -1,18 +1,29 @@
 
+
 	<?php
 	// PHP 5.3.3ish
 
-    class BaseClass
+	class BaseClass
+	{
+		public function getName()
+		{
+			return "BaseClass";
+		}
+	}
+
+    class MyClass
     {
         static function instance()
         {
-            return new static(); // returns "BaseClass"
-            return new self();   // returns "AnotherClass"
+            return new static(); // liefert "Anoterclass"
+            return new self();   // liefert "MyClass"
+
+        	return new parent(); // funktioniert nicht !!!
         }
 
         public function getName()
         {
-            return "BaseClass";
+            return "MyClass";
         }
     }
 
@@ -24,4 +35,5 @@
         }
     }
 
+    // AnotherClass::instance
     var_dump(AnotherClass::instance()->getName());
